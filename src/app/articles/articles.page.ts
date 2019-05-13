@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Article } from '../models/article.model';
 import { ArticleService } from '../services/article.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,7 +13,7 @@ export class ArticlesPage implements OnInit {
 
   listArticle: Array<Article>;
 
-  constructor(private serv: ArticleService) {
+  constructor(private serv: ArticleService, private router: Router) {
 
   }
 
@@ -27,6 +28,10 @@ export class ArticlesPage implements OnInit {
       data => this.listArticle = data,
       err => console.error(err)
     );
+  }
+
+  detailArticle(id: number): void {
+    this.router.navigate([`/articles/detail/${id}`]);
   }
 
 }
