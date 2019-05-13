@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Article } from '../models/article.model';
+import { ArticleService } from '../services/article.service';
 
 
 @Component({
@@ -11,7 +12,9 @@ export class ArticlesPage implements OnInit {
 
   listArticle: Array<Article>;
 
-  constructor() { }
+  constructor(private serv: ArticleService) {
+
+  }
 
   ngOnInit() {
     this.listArticle = [

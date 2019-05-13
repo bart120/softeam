@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { ArticlesPage } from './articles.page';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   {
@@ -23,4 +24,4 @@ const routes: Routes = [
   ],
   declarations: [ArticlesPage]
 })
-export class ArticlesPageModule {}
+export class ArticlesPageModule { }
