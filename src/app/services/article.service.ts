@@ -15,4 +15,8 @@ export class ArticleService {
     getAllArticle(): Observable<Array<Article>> {
         return this.http.get<Array<Article>>(environment.urlArticle);
     }
+
+    getArticleByID(id: number): Observable<Article> {
+        return this.http.get<Article>(`${environment.urlArticle}/${id}`);
+    }
 }
