@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Article } from '../models/article.model';
+import { environment } from 'src/environments/environment';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -10,9 +12,7 @@ export class ArticleService {
     constructor(private http: HttpClient) { }
 
 
-    getAllArticle(): Array<Article> {
-
-        this.http.get()
-        return null;
+    getAllArticle(): Observable<Array<Article>> {
+        return this.http.get<Array<Article>>(environment.urlArticle);
     }
 }

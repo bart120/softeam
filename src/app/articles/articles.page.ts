@@ -17,11 +17,16 @@ export class ArticlesPage implements OnInit {
   }
 
   ngOnInit() {
-    this.listArticle = [
-      { title: 'test' },
-      { title: 'test2' },
-      { title: 'test3' }
-    ];
+    /* this.listArticle = [
+       { title: 'test' },
+       { title: 'test2' },
+       { title: 'test3' }
+     ];*/
+
+    this.serv.getAllArticle().subscribe(
+      data => this.listArticle = data,
+      err => console.error(err)
+    );
   }
 
 }
