@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Article</ion-title>
+    <ion-title>Article {{article?.title}}</ion-title>
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
@@ -8,5 +8,17 @@
 </ion-header>
 
 <ion-content>
+
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>{{article?.publishDate | date}}</ion-card-subtitle>
+      <ion-card-title>{{article?.title}}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      {{article?.content}}
+    </ion-card-content>
+  </ion-card>
 
 </ion-content>

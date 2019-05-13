@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { ArticleService } from 'src/app/services/article.service';
+import { Article } from 'src/app/models/article.model';
 
 @Component({
   selector: 'app-detail',
@@ -7,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailPage implements OnInit {
 
-  constructor() { }
+  article: Article;
+
+  constructor(private route: ActivatedRoute, private serv: ArticleService) { }
 
   ngOnInit() {
+    this.serv.getArticleByID(this.route.snapshot.params['id']).subscribe(
+      data => this.article = data,
+      err => console.warn(err)
+    );
   }
 
 }

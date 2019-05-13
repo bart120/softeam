@@ -34,4 +34,17 @@ export class ArticlesPage implements OnInit {
     this.router.navigate([`/articles/detail/${id}`]);
   }
 
+  doRefresh(ev: any): void {
+    this.serv.getAllArticle().subscribe(
+      data => {
+        this.listArticle = data;
+        ev.target.complete();
+      },
+      err => {
+        console.error(err);
+        ev.target.complete();
+      }
+    );
+  }
+
 }

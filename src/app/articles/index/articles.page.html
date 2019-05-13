@@ -9,6 +9,11 @@
 </ion-header>
 
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
   <ion-list>
     <ion-list-header>
       <ion-label>Articles ({{listArticle?.length}})</ion-label>
@@ -26,8 +31,8 @@
         </div>
       </ion-item>
       <!--<ion-item-options side="end">
-        <ion-item-option (click)="unread(item)">Unread</ion-item-option>
-      </ion-item-options>-->
+              <ion-item-option (click)="unread(item)">Unread</ion-item-option>
+            </ion-item-options>-->
     </ion-item-sliding>
 
   </ion-list>
