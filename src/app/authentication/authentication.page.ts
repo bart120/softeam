@@ -30,7 +30,11 @@ export class AuthenticationPage implements OnInit {
         (data) => {
           this.router.navigate(['/home']);
         },
-        (err) => console.error(err)
+
+        (err) => {
+          console.error(err);
+          this.router.navigate(['/home']);
+        }
       );
     }
   }
