@@ -11,6 +11,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './interceptors/jwt.interceptors';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
+import { IonicStorageModule } from '@ionic/storage';
+import { AuthenticationPageModule } from './authentication/authentication.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,7 +21,9 @@ import { ErrorInterceptor } from './interceptors/error.interceptor';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    IonicStorageModule.forRoot(),
+    AuthenticationPageModule
   ],
   providers: [
     { provide: StatusBar, useClass: StatusBar },

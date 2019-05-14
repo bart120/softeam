@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { AuthenticationService } from './authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-authentication',
@@ -10,7 +12,10 @@ export class AuthenticationPage implements OnInit {
 
   formAuth: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private authentication: AuthenticationService,
+    private router: Router) { }
 
   ngOnInit() {
     this.formAuth = this.formBuilder.group({
@@ -20,7 +25,14 @@ export class AuthenticationPage implements OnInit {
   }
 
   login(event: any): void {
-
+    if (this.formAuth.valid) {
+      this.authentication.login(this.formAuth.value.login, this.formAuth.value.password).subscribe(
+        (data) => {
+          this.router.navigate(['/home']);
+        },
+        (err) => console.error(err)
+      );
+    }
   }
 
 }
