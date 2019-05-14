@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Article } from '../../models/article.model';
 import { ArticleService } from '../../services/article.service';
 import { Router } from '@angular/router';
+import { Calendar } from '@ionic-native/calendar/ngx';
 
 
 @Component({
@@ -13,7 +14,7 @@ export class ArticlesPage implements OnInit {
 
   listArticle: Array<Article>;
 
-  constructor(private serv: ArticleService, private router: Router) {
+  constructor(private serv: ArticleService, private router: Router, private cal: Calendar) {
 
   }
 
@@ -26,7 +27,7 @@ export class ArticlesPage implements OnInit {
 
     this.serv.getAllArticle().subscribe(
       data => this.listArticle = data,
-      err => console.error(err)
+      err => alert(err)
     );
   }
 
@@ -44,6 +45,15 @@ export class ArticlesPage implements OnInit {
         console.error(err);
         ev.target.complete();
       }
+    );
+  }
+
+  addCalendar(item: Article) {
+
+    this.cal.createEvent(item.title, '', '', new Date(2019, 5, 14), new Date(2019, 5, 15)).then(
+      data => console.log('evenement créé')
+    ).catch(
+      err => console.error(err)
     );
   }
 

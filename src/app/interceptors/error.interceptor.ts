@@ -16,7 +16,7 @@ export class ErrorInterceptor implements HttpInterceptor {
                 if (err.status == '401') {
                     this.router.navigate(['/authentication']);
                 }
-
+                console.warn(err);
                 const error = err.message || err.error.message || err.statusText;
                 console.error(error);
                 return throwError(error);

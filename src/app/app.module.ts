@@ -13,6 +13,7 @@ import { JwtInterceptor } from './interceptors/jwt.interceptors';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { IonicStorageModule } from '@ionic/storage';
 import { AuthenticationPageModule } from './authentication/authentication.module';
+import { Calendar } from '@ionic-native/calendar/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,7 +31,8 @@ import { AuthenticationPageModule } from './authentication/authentication.module
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    Calendar
   ],
   bootstrap: [AppComponent]
 })
